@@ -10,5 +10,6 @@ holidays
 mlflow
 sqlalchemy
 psycopg2-binary
-streamlit
+streamlit==1.44.1
 plotly
+altair<6
