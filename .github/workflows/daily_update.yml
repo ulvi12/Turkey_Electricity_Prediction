@@ -2,8 +2,8 @@ name: Daily Prediction Update
 
 on:
   schedule:
-    # Runs daily at 04:05 UTC (07:05 Istanbul time)
-    - cron: '5 4 * * *'
+    # Runs daily at 02:05 UTC (05:05 Istanbul time)
+    - cron: '5 2 * * *'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
@@ -24,8 +24,13 @@ jobs:
         run: pip install -r requirements.txt
       
       - name: Run daily prediction pipeline
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 4
+          max_attempts: 5
+          retry_wait_seconds: 7200
+          command: python scripts/daily_run.py
         env:
           EPIAS_USERNAME: ${{ secrets.EPIAS_USERNAME }}
           EPIAS_PASSWORD: ${{ secrets.EPIAS_PASSWORD }}
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
-        run: python scripts/daily_run.py
