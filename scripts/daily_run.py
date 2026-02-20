@@ -1,5 +1,3 @@
-"""Daily automation script: fetches yesterday's data, runs predictions, stores to DB."""
-
 import logging
 import sys
 import os
@@ -67,7 +65,16 @@ def main():
     else:
         epias_df = pd.DataFrame(columns=['date', 'epias_forecast'])
 
+    if not epias_df.empty:
+        epias_df['date'] = pd.to_datetime(epias_df['date'])
+        epias_df = epias_df[epias_df['date'].dt.date == target_date.date()]
+
     pred_df = pred_df.rename(columns={'prediction': 'model_prediction'})
+
+    actual_df['date'] = pd.to_datetime(actual_df['date'].astype(str).str[:19])
+    if not epias_df.empty:
+        epias_df['date'] = pd.to_datetime(epias_df['date'].astype(str).str[:19])
+    pred_df['date'] = pd.to_datetime(pred_df['date'].astype(str).str[:19])
 
     merged_df = pd.merge(actual_df, epias_df, on='date', how='outer')
     merged_df = pd.merge(merged_df, pred_df, on='date', how='outer')

@@ -56,7 +56,7 @@ class InferencePipeline:
 
         forecast_df = self.data_loader.get_weather_forecast(
             start_date=history_start_date,
-            end_date=target_date + timedelta(days=-1)
+            end_date=target_date
         )
 
         df_processed = self.feature_engineer.process_data(full_df, forecast_df)

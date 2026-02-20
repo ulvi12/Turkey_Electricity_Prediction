@@ -88,14 +88,15 @@ class FeatureEngineer:
 
     def merge_weather(self, df: pd.DataFrame, forecast_df: pd.DataFrame) -> pd.DataFrame:
         df = df.copy()
-        # If date is index, reset it so we can merge on 'date' column
         if df.index.name == 'date':
             df = df.reset_index()
+        df['date'] = pd.to_datetime(df['date'].astype(str).str[:19])
+
+        forecast_df = forecast_df.copy()
+        forecast_df['date'] = pd.to_datetime(forecast_df['date'].astype(str).str[:19])
+
         merged_df = pd.merge(df, forecast_df, on='date', how='left')
-        
-        # Restore index
         merged_df = merged_df.set_index('date')
-        
         return merged_df
 
     def process_data(self, df: pd.DataFrame, forecast_df: pd.DataFrame) -> pd.DataFrame:
