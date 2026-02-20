@@ -1,0 +1,14 @@
+pandas
+numpy
+requests
+xgboost
+scikit-learn
+fastapi
+uvicorn
+python-dotenv
+holidays
+mlflow
+sqlalchemy
+psycopg2-binary
+streamlit
+plotly
