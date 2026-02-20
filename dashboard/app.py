@@ -70,9 +70,9 @@ else:
                 d_rmse_model = ((valid_daily['Actual'] - valid_daily['Model Prediction']) ** 2).mean() ** 0.5
                 d_rmse_epias = ((valid_daily['Actual'] - valid_daily['EPIAS Forecast']) ** 2).mean() ** 0.5
 
-                d_col1.metric("Model MAE", f"{d_mae_model:.2f}", delta=f"{(d_mae_model-d_mae_epias):.2f} vs EPIAS Forecast", delta_color="inverse")
-                d_col2.metric("Model MAPE", f"{d_mape_model:.2f}%", delta=f"{(d_mape_model-d_mape_epias):.2f}% vs EPIAS Forecast", delta_color="inverse")
-                d_col3.metric("Model RMSE", f"{d_rmse_model:.2f}", delta=f"{(d_rmse_model-d_rmse_epias):.2f} vs EPIAS Forecast", delta_color="inverse")
+                d_col1.metric("XGBoost MAE", f"{d_mae_model:.2f}", delta=f"{(d_mae_model-d_mae_epias):.2f} vs EPIAS Forecast", delta_color="inverse")
+                d_col2.metric("XGBoost MAPE", f"{d_mape_model:.2f}%", delta=f"{(d_mape_model-d_mape_epias):.2f}% vs EPIAS Forecast", delta_color="inverse")
+                d_col3.metric("XGBoost RMSE", f"{d_rmse_model:.2f}", delta=f"{(d_rmse_model-d_rmse_epias):.2f} vs EPIAS Forecast", delta_color="inverse")
                 
                 d_col1.info(f"EPIAS Forecast MAE: {d_mae_epias:.2f}")
                 d_col2.info(f"EPIAS Forecast MAPE: {d_mape_epias:.2f}%")
@@ -123,9 +123,9 @@ else:
             c_rmse_epias = ((valid_cum['Actual'] - valid_cum['EPIAS Forecast']) ** 2).mean() ** 0.5
             c_rmse_model = ((valid_cum['Actual'] - valid_cum['Model Prediction']) ** 2).mean() ** 0.5
             
-            c_col1.metric("Avg MAE", f"{c_mae_model:.2f}", delta=f"{(c_mae_model-c_mae_epias):.2f} vs EPIAS Forecast", delta_color="inverse")
-            c_col2.metric("Avg MAPE", f"{c_mape_model:.2f}%", delta=f"{(c_mape_model-c_mape_epias):.2f}% vs EPIAS Forecast", delta_color="inverse")
-            c_col3.metric("Avg RMSE", f"{c_rmse_model:.2f}", delta=f"{(c_rmse_model-c_rmse_epias):.2f} vs EPIAS Forecast", delta_color="inverse")
+            c_col1.metric("XGBoost MAE", f"{c_mae_model:.2f}", delta=f"{(c_mae_model-c_mae_epias):.2f} vs EPIAS Forecast", delta_color="inverse")
+            c_col2.metric("XGBoost MAPE", f"{c_mape_model:.2f}%", delta=f"{(c_mape_model-c_mape_epias):.2f}% vs EPIAS Forecast", delta_color="inverse")
+            c_col3.metric("XGBoost RMSE", f"{c_rmse_model:.2f}", delta=f"{(c_rmse_model-c_rmse_epias):.2f} vs EPIAS Forecast", delta_color="inverse")
             
             c_col1.info(f"EPIAS Forecast MAE: {c_mae_epias:.2f}")
             c_col2.info(f"EPIAS Forecast MAPE: {c_mape_epias:.2f}%")
