@@ -12,6 +12,7 @@ from src.database import Database
 st.set_page_config(page_title="Türkiye's Electricity Consumption Prediction", layout="wide")
 
 st.title("Türkiye's Electricity Consumption Prediction")
+st.caption("Day-ahead forecasting of Türkiye's hourly electricity consumption.")
 st.caption("Comparing our XGBoost model predictions vs. EPIAS official forecast against actual consumption.")
 
 
