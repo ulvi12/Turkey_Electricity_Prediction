@@ -7,7 +7,6 @@ fastapi
 uvicorn
 python-dotenv
 holidays
-mlflow
 sqlalchemy
 psycopg2-binary
 streamlit==1.44.1
