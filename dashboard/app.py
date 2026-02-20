@@ -49,7 +49,8 @@ else:
         else:
             default_date = datetime.now().date() - timedelta(days=1)
             
-        selected_date = st.date_input("Select Date", default_date)
+        min_allowed = datetime(2026, 2, 15).date()
+        selected_date = st.date_input("Select Date", max(default_date, min_allowed), min_value=min_allowed)
         
         daily_mask = (df['date'].dt.date == selected_date)
         daily_df = df.loc[daily_mask]
@@ -97,10 +98,11 @@ else:
     with tab2:
         st.header("Cumulative Performance")
         
-        min_date = df['date'].min().date()
+        min_allowed = datetime(2026, 2, 15).date()
+        min_date = max(df['date'].min().date(), min_allowed)
         max_date = df['date'].max().date()
         
-        date_range = st.date_input("Select Date Range", [min_date, max_date], key='cum_range')
+        date_range = st.date_input("Select Date Range", [min_date, max_date], min_value=min_allowed, key='cum_range')
         
         if len(date_range) == 2:
             start_d, end_d = date_range
