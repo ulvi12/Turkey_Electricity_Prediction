@@ -2,15 +2,17 @@ name: Daily Prediction Update
 
 on:
   schedule:
-    # Runs daily at 02:12 UTC (05:12 Istanbul time)
-    - cron: '12 2 * * *'
-  workflow_dispatch: # Allow manual trigger
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
 
 jobs:
   daily-update:
     runs-on: ubuntu-latest
     
     steps:
+      - name: Show public IP
+        run: curl https://api.ipify.org
+
       - name: Checkout repository
         uses: actions/checkout@v4
       
