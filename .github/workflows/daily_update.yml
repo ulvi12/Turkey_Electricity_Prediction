@@ -28,7 +28,7 @@ jobs:
         with:
           timeout_minutes: 4
           max_attempts: 5
-          retry_wait_seconds: 7200
+          retry_wait_seconds: 3600
           command: python scripts/daily_run.py
         env:
           EPIAS_USERNAME: ${{ secrets.EPIAS_USERNAME }}
