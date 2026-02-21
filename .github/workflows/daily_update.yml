@@ -2,8 +2,8 @@ name: Daily Prediction Update
 
 on:
   schedule:
-    # Runs daily at 02:05 UTC (05:05 Istanbul time)
-    - cron: '5 2 * * *'
+    # Runs daily at 02:12 UTC (05:12 Istanbul time)
+    - cron: '12 2 * * *'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
