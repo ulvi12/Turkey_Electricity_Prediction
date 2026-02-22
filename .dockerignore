@@ -1,6 +1,5 @@
 .venv/
 .env
-mlruns/
 notebook/
 __pycache__/
 *.pyc
@@ -9,5 +8,4 @@ __pycache__/
 .gitignore
 .dockerignore
 README.md
-monitoring.db
 dashboard/

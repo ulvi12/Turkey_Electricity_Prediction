@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 import pandas as pd
 from contextlib import asynccontextmanager
 
@@ -41,7 +41,14 @@ def predict(request: PredictionRequest):
             target_date = pd.to_datetime(request.date)
         else:
             target_date = datetime.now() + timedelta(days=-1)
-            
+
+        limit_date = date.today() + timedelta(days=-1)
+        if target_date.date() > limit_date:
+            raise HTTPException(
+                status_code=422,
+                detail=(f"Cannot predict beyond {limit_date}.")
+            )
+
         results = pipeline.predict(target_date)
         
         return {
