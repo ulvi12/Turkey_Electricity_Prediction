@@ -46,7 +46,7 @@ else:
         
         available_dates = df['date'].dt.date.unique()
         if len(available_dates) > 0:
-            default_date = available_dates[-2] if len(available_dates) > 1 else available_dates[-1]
+            default_date = available_dates[-1] if len(available_dates) > 1 else available_dates[-1]
         else:
             default_date = datetime.now().date() - timedelta(days=1)
             
