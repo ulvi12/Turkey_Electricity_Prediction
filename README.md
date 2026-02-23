@@ -2,7 +2,7 @@
 
 An end-to-end ML pipeline that forecasts Turkey's hourly electricity consumption one day ahead, updated automatically every day.
 
-**[🔗 Live Dashboard](https://turkeyelectricityprediction.streamlit.app/)**
+**[Live Dashboard](https://turkeyelectricityprediction.streamlit.app/)**
 
 ---
 
@@ -10,7 +10,7 @@ An end-to-end ML pipeline that forecasts Turkey's hourly electricity consumption
 
 Turkey's energy market [EPIAS](https://www.epias.com.tr/en/) publishes hourly electricity consumption data for Türkiye. They also publish their official forecasts for the hourly consumption. This project builds an XGBoost model that competes with that official forecast, using the same publicly available inputs: historical consumption and weather data.
 
-> The day-ahead market requires participants to submit their consumption/generation plans by 12:00 the previous day. To create a realistic setting, our forecasts are made one full day prior to the actual realizations. See [EPIAS Day-Ahead Market](https://www.epias.com.tr/en/day-ahead-market/processes/) for details.
+> The day-ahead market requires participants to submit their consumption/generation plans by 12:00 the previous day. To create the same realistic setting, our forecasts are made one full day prior to the actual realizations. See [EPIAS Day-Ahead Market](https://www.epias.com.tr/en/day-ahead-market/processes/) for details.
 
 Each day, a GitHub Actions job:
 1. Fetches actual consumption from EPIAS API
