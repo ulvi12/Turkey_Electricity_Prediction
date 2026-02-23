@@ -49,8 +49,17 @@ streamlit run dashboard/app.py
 **FastAPI (Docker):**
 ```bash
 docker-compose up --build
-# → http://localhost:8000/docs
+# http://localhost:8000/docs
 ```
+
+**Get predictions for a specific date:**
+```bash
+curl -X POST http://localhost:8000/predict \
+  -H "Content-Type: application/json" \
+  -d '{"date": "2026-02-15"}'
+```
+
+> Omit the `date` field to predict for yesterday. Dates in the future, starting from today, are rejected because of unavailable data.
 
 ---
 
