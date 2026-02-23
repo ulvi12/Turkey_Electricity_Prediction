@@ -87,7 +87,7 @@ else:
             fig_daily = go.Figure()
             fig_daily.add_trace(go.Scatter(x=daily_df['date'], y=daily_df['Actual'], name='Actual', line=dict(color='#3498db', dash='dash')))
             fig_daily.add_trace(go.Scatter(x=daily_df['date'], y=daily_df['EPIAS Forecast'], name='EPIAS Forecast', line=dict(color='#e74c3c')))
-            fig_daily.add_trace(go.Scatter(x=daily_df['date'], y=daily_df['Model Prediction'], name='Model Prediction', line=dict(color='#2ecc71')))
+            fig_daily.add_trace(go.Scatter(x=daily_df['date'], y=daily_df['Model Prediction'], name='XGBoost Forecast', line=dict(color='#2ecc71')))
             fig_daily.update_layout(xaxis_title="Hour", yaxis_title="MWh", template="plotly_white")
             st.plotly_chart(fig_daily, use_container_width=True)
             
@@ -136,7 +136,7 @@ else:
             st.subheader("Time Series Overview")
             fig_all = go.Figure()
             fig_all.add_trace(go.Scatter(x=valid_cum['date'], y=valid_cum['Actual'], name='Actual', line=dict(color='#3498db', dash='dash', width=1)))
-            fig_all.add_trace(go.Scatter(x=valid_cum['date'], y=valid_cum['Model Prediction'], name='Model Prediction', line=dict(color='#2ecc71', width=1)))
+            fig_all.add_trace(go.Scatter(x=valid_cum['date'], y=valid_cum['Model Prediction'], name='XGBoost Forecast', line=dict(color='#2ecc71', width=1)))
             fig_all.add_trace(go.Scatter(x=valid_cum['date'], y=valid_cum['EPIAS Forecast'], name='EPIAS Forecast', line=dict(color='#e74c3c', width=1)))
             fig_all.update_layout(xaxis_title="Date", yaxis_title="MWh", template="plotly_white")
             st.plotly_chart(fig_all, use_container_width=True)
